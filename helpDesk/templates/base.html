@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% block head %}
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>HelpDesk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+{% endblock %}
+
+
+{% block menu %}
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand" href="/">HelpDesk</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li>
+        <a class="nav-link active" aria-current="page" href="/">Start</a>
+        </li>
+        <li>
+        <a class="nav-link" href="#">Zgłoszenia</a>
+        </li>
+        <li>
+        <a class="nav-link" href="#">Baza wiedzy</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-right">
+        <a href="{{ url_for('auth_endpoints.login') }}" type="button" class="btn btn-secondary px-3 me-2">
+          Login
+        </a>
+        <a href="{{ url_for('auth_endpoints.logout') }}" type="button" class="btn btn-primary me-3">
+          Logout
+        </a>
+    </div>
+      </div>
+
+  </div>
+</nav>
+{% endblock %}
+
+{% block page_content %}
+{% endblock %}
+
+{% block foot %}
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
+{% endblock %}
