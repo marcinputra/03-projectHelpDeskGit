@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>Dodaj zgłoszenie</h1>
+                    {% if session %}
+                    <div class="alert alert-info" role="alert">
+                        Witaj {{ session.name }}! Możesz dodać zgłoszenie:
+                    </div>
+                    <div class="container">
+                      <h2 class="mb-4">Formularz Zgłoszenia Naprawy</h2>
+                      <form action="/add_event" method="POST">
+                        <div class="form-group">
+                          <label>Imię:</label>
+                          <input type="text" class="form-control" id="name" value="{{session.name}}" required disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>Nazwisko:</label>
+                          <input type="text" class="form-control" id="lastname" value="{{session.lastname}}" required disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>Numer telefonu:</label>
+                          <input type="tel" class="form-control" id="telefon" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Email:</label>
+                          <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="opis">Opis problemu:</label>
+                          <textarea class="form-control" id="opis" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                          <button type="submit" class="btn btn-primary">Zgłoś Naprawę</button>
+                        </div>
+                      </form>
+                    </div>
+
+
+                    {% else %}
+                    <div class="alert alert-danger" role="alert">
+                        Musisz być zalogowany. Jesteś niezalogowany.
+                    </div>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
