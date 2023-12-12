@@ -10,7 +10,6 @@ app = Flask(__name__, template_folder='./templates')
 app.config.from_object(Config)
 
 app.register_blueprint(forms_bp)
-# dlaczego dodajemy tu url_prefix ?
 app.register_blueprint(auth_db, url_prefix='/auth')
 app.register_blueprint(database_db)
 

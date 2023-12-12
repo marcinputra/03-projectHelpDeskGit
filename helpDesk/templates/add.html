@@ -13,23 +13,36 @@
                       <form action="/add_event" method="POST">
                         <div class="form-group">
                           <label>Imię:</label>
-                          <input type="text" class="form-control" id="name" value="{{session.name}}" required disabled>
+                          <input type="text" class="form-control" name="name" value="{{session.name}}" required disabled>
                         </div>
                         <div class="form-group">
                           <label>Nazwisko:</label>
-                          <input type="text" class="form-control" id="lastname" value="{{session.lastname}}" required disabled>
+                          <input type="text" class="form-control" name="lastname" value="{{session.lastname}}" required disabled>
                         </div>
                         <div class="form-group">
+                          <label>Typ zdarzenia:</label>
+                            <select class="form-select" aria-label="Default select example" name="id_events">
+                                {% for e in event %}
+                                <option value="{{e.id_events}}">{{ e.type_e }}</option>
+                                {% endfor%}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Lokalizacja:</label>
+                          <input type="text" class="form-control" name="location" required>
+                        </div>
+                          location
+                        <div class="form-group">
                           <label>Numer telefonu:</label>
-                          <input type="tel" class="form-control" id="telefon" required>
+                          <input type="tel" class="form-control" name="phone" required>
                         </div>
                         <div class="form-group">
                           <label>Email:</label>
-                          <input type="email" class="form-control" id="email" required>
+                          <input type="email" class="form-control" name="mail" required>
                         </div>
                         <div class="form-group">
-                          <label for="opis">Opis problemu:</label>
-                          <textarea class="form-control" id="opis" rows="5" required></textarea>
+                          <label>Opis problemu:</label>
+                          <textarea class="form-control" name="description" rows="5" required></textarea>
                         </div>
                         <div class="form-group" style="margin-top: 10px;">
                           <button type="submit" class="btn btn-primary">Zgłoś Naprawę</button>

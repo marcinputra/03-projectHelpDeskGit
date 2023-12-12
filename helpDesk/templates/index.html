@@ -5,9 +5,13 @@
             <div class="col-6">
                 <h1>Strona główna</h1>
                 {% if session %}
-                Witaj {{ session.login }}
+                <div class="alert alert-info" role="alert">
+                    Witaj {{ session.name }} {{session.lastname}}! Panel informacyjny.
+                </div>
                 {% else %}
-                Jesteś niezalogowany
+                <div class="alert alert-warning" role="alert">
+                    Jesteś niezalogowany.
+                </div>
                 {% endif %}
             </div>
 
@@ -19,6 +23,7 @@
                     <th>Data zdarzenia</th>
                     <th>Stan zdarzenia</th>
                     <th>Lokalizacaja</th>
+                    <th></th>
                 </tr>
                 {% for event in events %}
                 <tr class="table-dark">
@@ -28,6 +33,7 @@
                     <td>{{ event.data }}</td>
                     <td>{{ event.state }}</td>
                     <td>{{ event.location }}</td>
+                    <td><button class="btn btn-info btn-sm">Szczegóły</button></td>
                 </tr>
                 {% endfor %}
             </table>
