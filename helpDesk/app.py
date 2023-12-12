@@ -17,7 +17,7 @@ app.register_blueprint(database_db)
 @app.route('/')
 def index():
     if not session:
-        return redirect(url_for('auth_endpoints.login')) #info='Zalogowac sie musisz'
+        return redirect(url_for('auth_endpoints.login')) #info='Zalogowac sie musisz..'
     id = session['user_id']
     events = get_all_events(id)
 
