@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card text-center">
+                    <div class="card-header bg-dark text-white">
+                        <h3>Szczegóły zdarzenia nr {{id_reports.id_reports}} z dnia: {{id_reports.data}}</h3>
+                    </div>
+                    <div class="card-header">
+                        Imię i nazwisko zgłaszającego: <span class="nameclass"> {{id_reports.name}} {{id_reports.lastname}} </span>
+                    </div>
+                    <div class="card-body">
+
+                        <form action="/update_event/{{id_reports.id_reports}}" method="POST">
+<!--                            do zrobienia zmaina typu zdarzenia -->
+<!--                        <div class="form-group">-->
+<!--                          <label>Typ zdarzenia:</label>-->
+<!--                            <select class="form-select" aria-label="Default select example" name="id_events">-->
+<!--                                {% for e in event %}-->
+<!--                                <option value="{{e.id_events}}">{{ e.type_e }}</option>-->
+<!--                                {% endfor%}-->
+<!--                            </select>-->
+<!--                        </div>-->
+                        <h5 class="card-title ">{{id_reports.type_e}}</h5>
+
+                        <div class="form-group text-left">
+                            <label>Lokalizacja:</label>
+                            <input type="text" class="form-control" name="location" value="{{id_reports.location}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Numer telefonu:</label>
+                            <input type="tel" class="form-control" name="phone" value="{{id_reports.phone}}" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Email:</label>
+                          <input type="email" class="form-control" name="mail" value="{{id_reports.mail}}" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Opis problemu:</label>
+                          <textarea class="form-control" name="description" rows="5" required>{{id_reports.description}}</textarea>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                            <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+                            <button type="reset" class="btn btn-secondary">Anuluj zmiany</button>
+                        </div>
+                      </form>
+                        {% if is_admin %}
+                            {%if id_reports.state=="Otwarte" %}
+                            <hr>
+                            <form action="/update_event_close_open/{{id_reports.id_reports}}">
+                                <input type="text" name="id" value="{{id_reports.id_events}}" hidden="hidden">
+                                <button type="submit" class="btn btn-secondary">
+                                    Zamknij zdarzenie
+                                </button>
+                            </form>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        Ilość dni od zdarzenia: {{timetoevent}}
+                    </div>
+                    <div class="card-footer">
+                        <a href="/" class="btn btn-primary">Wróć</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card text-center">
+                    <div class="card-header bg-dark text-white">
+                        <h3>Szczegóły zdarzenia nr {{id_reports.id_reports}} z dnia: {{id_reports.data}}</h3>
+                    </div>
+                    <div class="card-header">
+                        Imię i nazwisko zgłaszającego: <span class="nameclass"> {{id_reports.name}} {{id_reports.lastname}} </span>
+                        <br>
+                        Telefon: {{id_reports.phone}}
+                        <br>
+                        Mail: {{id_reports.mail}}
+                        <br>
+                        Lokalizacja: {{id_reports.location}}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title ">{{id_reports.type_e}}</h5>
+                        <p class="card-text">{{id_reports.description}}</p>
+                        {% if id_reports.state == 'Zamknięte' %}
+                        <a href="#" class="btn btn-primary disabled">{{id_reports.state}}</a>
+                        {% else %}
+                        <a href="#" class="btn btn-primary">{{id_reports.state}}</a>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        Ilość dni od zdarzenia: {{timetoevent}}
+                    </div>
+                    <div class="card-footer">
+                        <a href="/" class="btn btn-primary">Wróć</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
